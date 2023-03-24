@@ -1,0 +1,138 @@
+﻿
+@model DOAN.Models.KhachHang
+@{
+    Layout = null;
+    <!-- Custom fonts for this template-->
+    <link href="~/Content/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="~/Content/css/sb-admin-2.min.css" rel="stylesheet" />
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+    <section class="vh-100" style="background-color: #eee;">
+        <div class="container h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-lg-12 col-xl-11">
+                    <div class="card text-black" style="border-radius: 25px;">
+                        @using (Html.BeginForm("DangKy", "NguoiDung", FormMethod.Post))
+                        {
+                            @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                            <div class="card-body p-md-5">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+
+                                        <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
+
+                                        <form class="mx-1 mx-md-4">
+
+                                            <div class="d-flex flex-row align-items-center mb-4">
+                                                <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                                                <div class="form-outline flex-fill mb-0">
+                                                    @Html.TextBoxFor(model => model.TenKH, new { @class = "form-control", @autofocus = "autofocus" })
+                                                    <label class="form-label" for="form3Example1c">Họ và tên</label>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex flex-row align-items-center mb-4">
+                                                <i class="fas fa-phone fa-lg me-3 fa-fw"></i>
+                                                <div class="form-outline flex-fill mb-0">
+                                                    @Html.TextBoxFor(model => model.SDT, new { @class = "form-control" })
+                                                    <label class="form-label" for="form3Example1c">Số Đt</label>
+                                                    @ViewData["NumWrong"]
+                                                </div>
+                                            </div>
+
+                                            <div class="d-flex flex-row align-items-center mb-4">
+                                                <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                                                <div class="form-outline flex-fill mb-0">
+                                                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+                                                    <label class="form-label" for="form3Example3c">Địa chỉ Email</label>
+                                                    @ViewData["UserExist"]
+                                                    @ViewData["EmailWrong"]
+                                                </div>
+                                            </div>
+
+                                            <div class="d-flex flex-row align-items-center mb-4">
+                                                <i class="fas fa-location-arrow fa-lg me-3 fa-fw"></i>
+                                                <div class="form-outline flex-fill mb-0">
+                                                    @Html.TextBoxFor(model => model.DiaChi, new { @class = "form-control" })
+                                                    <label class="form-label" for="form3Example3c">Địa chỉ</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="d-flex flex-row align-items-center mb-4">
+                                                <i class="fas fa-user-alt fa-lg me-3 fa-fw"></i>
+                                                <div class="form-outline flex-fill mb-0">
+                                                    @Html.TextBoxFor(model => model.UserKH, new { @class = "form-control" })
+                                                    <label class="form-label" for="form3Example4c">Tài khoản</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="d-flex flex-row align-items-center mb-4">
+                                                <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                                                <div class="form-outline flex-fill mb-0">
+                                                    @Html.PasswordFor(model => model.PassKH, new { @class = "form-control" })
+                                                    <label class="form-label" for="form3Example4c">PassWord</label>
+                                                    @ViewData["PassWrong"]
+                                                </div>
+                                            </div>
+
+                                            <div class="d-flex flex-row align-items-center mb-4">
+                                                <i class="fas fa-key fa-lg me-3 fa-fw"></i>
+                                                <div class="form-outline flex-fill mb-0">
+
+                                                    <input type="password" id="MatKhauXacNhan" name="MatKhauXacNhan" class="form-control" />
+                                                    @ViewData["NhapMKXN"]
+                                                    @ViewData["MatKhauGiongNhau"]
+                                                    Xac Nhan Mat khau
+                                                </div>
+                                            </div>
+
+
+                                            <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                                                <button onclick="PopUp()" type="submit" class="btn btn-primary btn-lg">Register</button>
+                                            </div>
+                                            @Html.ActionLink("Back", "DangNhap", "NguoiDung")
+                                        </form>
+
+                                    </div>
+                                    <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+
+                                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
+                                             class="img-fluid" alt="Sample image">
+
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Bootstrap core JavaScript-->
+    <script src="~/Content/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Content/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="~/Content/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="~/Content/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Page level plugins -->
+    <scrpt src="vendor/chart.js/Chart.min.js"></scrpt>
+    <script src="~/Content/vendor/chart.js/Chart.min.js"></script>
+    <!-- Page level custom scripts -->
+    <script src="~/Content/js/demo/chart-area-demo.js"></script>
+    <script src="~/Content/js/demo/chart-pie-demo.js"></script>
+    <script src="~/Content/fontawesome-free/js/all.min.js"></script>
+
+</body>
+</html>

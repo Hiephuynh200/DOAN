@@ -1,0 +1,46 @@
+﻿@model DOAN.Models.SanPham
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="wrapper">
+    <table class="table table-hover table-dark">
+        <thead>
+            <tr>
+                <th scope="col">Tên Sản Phẩm</th>
+                <th scope="col">Mã Sản phẩm </th>
+                <th scope="col">Loại SP</th>
+                <th scope="col">Hình ảnh</th>
+                <th scope="col">Giá Bán</th>
+                <th scope="col">Số Lượng</th>
+                <th scope="col">Giá Nhập</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Html.DisplayFor(model => model.TenSP)</td>
+                <td>@Html.DisplayFor(model => model.MaSP)</td>
+                <td>@Html.DisplayFor(model => model.LoaiSanPham.TenLoai)</td>
+                <td>
+                    <img width="200px" src="@Html.DisplayFor(model => model.HinhAnh)" alt="Alternate Text" />
+                </td>
+                <td>@Html.DisplayFor(model => model.GiaBan)</td>
+                <td>@Html.DisplayFor(model => model.SoLuong) </td>
+                <td>@Html.DisplayFor(model => model.GiaNhap) </td>
+            </tr>
+        </tbody>
+    </table>
+    <h3>Are you sure you want to delete this?</h3>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "listSP")
+        </div>
+    }
+</div>

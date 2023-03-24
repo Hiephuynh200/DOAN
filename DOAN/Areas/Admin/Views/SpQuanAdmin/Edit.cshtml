@@ -1,0 +1,107 @@
+﻿@model DOAN.Models.SanPham
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="wrapper">
+        <h4>Chỉnh sửa sản phẩm</h4>
+        <table class="table table-hover table-dark">
+            <thead>
+                <tr>
+                    <th class="text-center" scope="col">Tên Sản Phẩm</th>
+                    <th class="text-center" scope="col">Mã Sản phẩm </th>
+                    <th class="text-center" scope="col">Loại SP</th>
+                    <th class="text-center" scope="col">Hình ảnh</th>
+                    <th class="text-center" scope="col">Giá Bán</th>
+                    <th class="text-center" scope="col">Số Lượng</th>
+                    <th class="text-center" scope="col">Giá Nhập</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="text-center">
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.TenSP, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.TenSP, "", new { @class = "text-danger" })
+                        </div>
+                    </td>
+                    <td class="text-center">@Html.DisplayFor(model => model.MaSP)</td>
+                    <td class="text-center">@Html.DisplayFor(model => model.LoaiSanPham.TenLoai)</td>
+                    <td class="text-center" style=" display: flex; flex-direction: column; align-items:center; width: 226px;">
+                        <img width="200px" src="@Html.DisplayFor(model => model.HinhAnh)" alt="Alternate Text" />
+                        <input type="file" name="fileUpload" id="fileUpload" accept="image/*" style="display:none;" />
+                        <input type="button" id="btnUpload" value="Chọn ảnh" class="btn-hover color-8 btn" />
+                    </td>
+                    @section upload
+{
+                        <script>
+                            $(function () {
+                                $('#btnUpload').click(function () {
+                                    $('#fileUpload').trigger('click');
+                                });
+                            });
+                            $('#fileUpload').change(function () {
+                                if (window.FormData !== undefined) {
+                                    var fileUpload = $('#fileUpload').get(0);
+                                    var files = fileUpload.files;
+                                    var formData = new FormData();
+                                    formData.append('file', files[0]);
+                                    $.ajax(
+                                        {
+                                            type: 'POST',
+                                            url: '/spQuanAdmin/ProcessUpload',
+                                            contentType: false,
+                                            processData: false,
+                                            data: formData,
+                                            success: function (urlImage) {
+                                                $('#pictureUpload').attr('src', urlImage);
+                                                $('#HinhAnh').val(urlImage);
+                                            },
+                                            error: function (err) {
+                                                alert('Error ', err.statusText);
+                                            }
+                                        });
+                                }
+                            });
+                        </script>
+                    }
+                    <td class="text-center">
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.GiaBan, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.GiaBan, "", new { @class = "text-danger" })
+                        </div>
+                    </td>
+                    <td class="text-center">
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.SoLuong, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.SoLuong, "", new { @class = "text-danger" })
+                        </div>
+                    </td>
+                    <td class="text-center">
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.GiaNhap, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.GiaNhap, "", new { @class = "text-danger" })
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Save" class="btn btn-default" />
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p>
+            @Html.ActionLink("Back to List", "SpQuan")
+        </p>
+    </div>
+}
+

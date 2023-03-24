@@ -1,0 +1,58 @@
+﻿@model DOAN.Models.NhanVien
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="~/Content/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/sb-admin-2.min.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="container p-5" style="width:38%">
+        <div class="card-header p-2">
+            <h3 class="text-center font-weight-bold my-4 ">H | Lab</h3>
+        </div>
+        <!-- Pills navs -->
+        @using (Html.BeginForm("DangNhap", "LoginAdmin", FormMethod.Post))
+        {
+            @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
+                    <form>
+                        <!-- Email input -->
+                        <div class="form-outline mb-4">
+                            <label class="form-label" for="loginName">Email </label>
+                            @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @autofocus = "autofocus" })
+                            @ViewData["ErrorAccount"]
+                        </div>
+                        <!-- Password input -->
+                        <div class="form-outline mb-4">
+                            <label class="form-label" for="loginPassword">Password</label>
+                            @Html.PasswordFor(model => model.Pass, new { @class = "form-control" })
+                            @ViewData["ErrorPass"]
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
+                        @*<a type="submit">@Html.ActionLink("Register", "DangKy", "User")</a>*@
+                    </form>
+                </div>
+            </div>
+        }
+
+    </div>
+
+    <script src="~/Content/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Content/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="~/Content/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="~/Content/js/sb-admin-2.min.js"></script>
+</body>
+
+</html>
+

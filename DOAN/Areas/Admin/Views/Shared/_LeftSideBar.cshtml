@@ -1,0 +1,107 @@
+﻿
+<ul class="navbar-nav sidebar sidebar-dark accordion" style="background-color:#808080" id="accordionSidebar">
+
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <div class="sidebar-brand-icon rotate-n-15">
+            <i class="fas fa-laugh-wink"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3">H | Lab</div>
+    </a>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item active">
+        <div class="nav-link" style="display:flex; align-items:center">
+            <i class="fa-solid fa-house"></i>
+            @Html.ActionLink("Home", "Index", "Admin/HomeAdmin", new { @area = "" }, new { @class = "nav-link" })
+        </div>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Interface
+    </div>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+        <div class="nav-link" style="display:flex; align-items:center; padding-bottom:0">
+
+            @Html.ActionLink("Áo", "SpAo", "Admin/SpAdmin", new { @area = "" }, new { @class = "nav-link" })
+        </div>
+
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Custom Components:</h6>
+                <a class="collapse-item" href="buttons.html">Buttons</a>
+                <a class="collapse-item" href="cards.html">Cards</a>
+            </div>
+        </div>
+    </li>
+
+    <!-- Nav Item - Utilities Collapse Menu -->
+    <li class="nav-item">
+        <div class="nav-link" style="display:flex; align-items:center; padding-top:0">
+            @Html.ActionLink(" Quần", "SpQuan", "Admin/spQuanAdmin", new { @area = "" }, new { @class = "nav-link" })
+        </div>
+
+        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+             data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Custom Utilities:</h6>
+                <a class="collapse-item" href="utilities-color.html">Colors</a>
+                <a class="collapse-item" href="utilities-border.html">Borders</a>
+                <a class="collapse-item" href="utilities-animation.html">Animations</a>
+                <a class="collapse-item" href="uti   cccclities-other.html">Other</a>
+            </div>
+        </div>
+    </li>
+    <li class="nav-item">
+        <div class="nav-link" style="display:flex; align-items:center; padding-top:0">
+            @Html.ActionLink("Giày", "listSP", "Admin/HomeAdmin", new { @area = "" }, new { @class = "nav-link" })
+        </div>
+        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+             data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Custom Utilities:</h6>
+                <a class="collapse-item" href="utilities-color.html">Colors</a>
+                <a class="collapse-item" href="utilities-border.html">Borders</a>
+                <a class="collapse-item" href="utilities-animation.html">Animations</a>
+                <a class="collapse-item" href="uti   cccclities-other.html">Other</a>
+            </div>
+        </div>
+    </li>
+    <li class="nav-item">
+        <div class="nav-link" style="display:flex; align-items:center; padding-top:0">
+            <span href="#" hidden id="Hide">
+                @Html.ActionLink("Quản Lý Nhân Viên", "DangKyAdmin", "Admin/LoginAdmin", new { @area = "" }, new { @class = "nav-link" })
+            </span>
+        </div>
+        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+             data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Custom Utilities:</h6>
+                <a class="collapse-item" href="utilities-color.html">Colors</a>
+                <a class="collapse-item" href="utilities-border.html">Borders</a>
+                <a class="collapse-item" href="utilities-animation.html">Animations</a>
+                <a class="collapse-item" href="uti   cccclities-other.html">Other</a>
+            </div>
+        </div>
+    </li>
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+
+</ul>
+
+<script>
+    var Phanquyen = document.getElementById('Hide');
+    if ("@Session["CHucVU"]" == 111) {
+        Phanquyen.hidden = false;
+    }
+</script>
+
