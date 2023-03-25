@@ -15,12 +15,13 @@ namespace DOAN.Controllers
         {
             int pageSize = 8;
             int pageNum = page ?? 1;
-            var all_SanPham = data.SanPham.OrderBy(s => s.TenSP);
-            var all_SanPhamTK = data.SanPham.OrderBy(m => m.TenSP).Where(sp => sp.TenSP.ToUpper().Contains(SearchString.ToUpper()));
+            var SearchAll = data.SanPham.OrderBy(s => s.TenSP);
+            var SearchSp = data.SanPham.OrderBy(m => m.TenSP).Where(sp => sp.TenSP.ToUpper().Contains(SearchString.ToUpper()));
             page = 1;
-            if (SearchString != null)
-                return View(all_SanPhamTK.ToPagedList(pageNum, pageSize));
-            return View(all_SanPham.ToPagedList(pageNum, pageSize));
+            if (SearchSp.ToString() == "")
+                return View(SearchSp.ToPagedList(pageNum, pageSize));
+            else
+                return View(SearchAll.ToPagedList(pageNum, pageSize));
         }
         public ActionResult ListSP()
         {

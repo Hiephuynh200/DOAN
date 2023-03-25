@@ -997,6 +997,7 @@
     <Content Include="Content\images\hero4.png" />
     <Content Include="Content\images\HomePage.png" />
     <Content Include="Content\images\logo.png" />
+    <Content Include="Content\images\OIP.jpg" />
     <Content Include="Content\images\pay\app.jpg" />
     <Content Include="Content\images\pay\pay.png" />
     <Content Include="Content\images\pay\play.jpg" />
@@ -1040,6 +1041,7 @@
     <Content Include="Content\js\sb-admin-2.min.js" />
     <Content Include="Content\Main.css" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\proDuct.css" />
     <Content Include="Content\vendor\bootstrap\js\bootstrap.bundle.js" />
     <Content Include="Content\vendor\bootstrap\js\bootstrap.bundle.min.js" />
     <Content Include="Content\vendor\bootstrap\js\bootstrap.js" />
@@ -2956,6 +2958,7 @@
     <Content Include="Views\GioHang\GioHangPartial.cshtml" />
     <Content Include="Views\MainPage\Index.cshtml" />
     <Content Include="Views\MainPage\Detail.cshtml" />
+    <Content Include="Views\GioHang\XacnhanDonhang.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

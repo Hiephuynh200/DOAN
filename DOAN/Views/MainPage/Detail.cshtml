@@ -3,36 +3,40 @@
 @{
     ViewBag.Title = "Detail";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/Content/proDuct.css" rel="stylesheet" />
 }
+<section id="prodetails" class="section-p1 d-sm-flex d-flex d-lg-flex d-md-flex " style="flex-wrap:wrap">
 
-<div class="wrapper">
-    <h4 class="text-center">Chi tiết Sản Phẩm</h4>
-    <table class="table table-hover table-dark">
-        <thead>
-            <tr>
-                <th scope="col">Tên Sản Phẩm</th>
-                <th scope="col">Mã Sản phẩm </th>
-                <th scope="col">Loại SP</th>
-                <th scope="col">Hình ảnh</th>
-                <th scope="col">Giá Bán</th>
-                <th scope="col">Số Lượng</th>
+    <div class="single-pro-image" style="flex-basis:50%">
+        <img src="@Html.DisplayFor(model => model.HinhAnh)" width="100%" id="MainImg" alt="" />
+        <div class="small-img-group">
+            <div class="small-img-col">
+                <img src="@Html.DisplayFor(model => model.HinhAnh)" width="100%" class="small-img" alt="" />
+            </div>        
+            <div class="small-img-col">
+                <img src="@Html.DisplayFor(model => model.HinhAnh)" width="100%" class="small-img" alt="" />
+            </div>
+            <div class="small-img-col">
+                <img src="@Html.DisplayFor(model => model.HinhAnh)" width="100%" class="small-img" alt="" />
+            </div>
+            <div class="small-img-col">
+                <img src="@Html.DisplayFor(model => model.HinhAnh)" width="100%" class="small-img" alt="" />
+            </div>
+        </div>
+    </div>
 
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>@Html.DisplayFor(model => model.TenSP)</td>
-                <td>@Html.DisplayFor(model => model.MaSP)</td>
-                <td>@Html.DisplayFor(model => model.LoaiSanPham.TenLoai)</td>
-                <td>
-                    <img width="200" src="@Html.DisplayFor(model => model.HinhAnh)" alt="Alternate Text" />
-                </td>
-                <td>@Html.DisplayFor(model => model.GiaBan)</td>
-                <td>@Html.DisplayFor(model => model.SoLuong) </td>
-            </tr>
-        </tbody>
-    </table>
-    <p>
-        <a class="btn btn-success" style="padding:1rem 2rem" href="@Url.Action("Index", "MainPage", new {@strURL = Request.Url.ToString() })">Back to List</a>
-</div>
-
+    <div class="single-pro-details" style="flex-basis:40%; margin:auto 0">
+        <h1>@Html.DisplayFor(model => model.TenSP)</h1>
+        <h5>Loại: @Html.DisplayFor(model => model.LoaiSanPham.TenLoai)</h5>
+        <h5>Gía Bán: @Html.DisplayFor(model => model.GiaBan)</h5>
+        <h5>Số Lượng:@Html.DisplayFor(model => model.SoLuong)  </h5>
+        <hr />
+        <h4>Mô tả sản phẩm</h4>
+        <span>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, debitis fugit? Debitis aspernatur
+            eaque modi blanditiis iusto! Suscipit officia beatae sit laudantium, nobis rem. Iure illo blanditiis
+            voluptates a omnis perferendis ipsa minima aliquid quas atque, perspiciatis quidem ratione
+            reiciendis molestias libero magnam voluptatem assumenda vero ex, eum labore consectetur?
+        </span>
+    </div>
+</section>
