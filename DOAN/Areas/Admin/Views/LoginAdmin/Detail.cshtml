@@ -1,0 +1,44 @@
+﻿
+@model DOAN.Models.NhanVien
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    <link href="~/Content/Site.css" rel="stylesheet" />
+}
+
+
+<div class="wrapper">
+    <table class="table table-hover table-dark">
+        <thead>
+            <tr>
+                <th scope="col">Tên Nhân viên</th>
+                <th scope="col">Mã Nhân viên </th>
+                <th scope="col">Số ĐT</th>
+                <th scope="col">Địa Chỉ</th>
+                <th scope="col">Email</th>
+                <th scope="col">Tài khoản</th>
+                <th scope="col">Mật khẩu</th>
+                <th scope="col">Chức vụ</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Html.DisplayFor(model => model.TenNV)</td>
+                <td>@Html.DisplayFor(model => model.MaNV)</td>
+                <td>@Html.DisplayFor(model => model.SDT)</td>
+                <td>@Html.DisplayFor(model => model.DiaChi)</td>
+                <td>@Html.DisplayFor(model => model.Email)</td>
+                <td>@Html.DisplayFor(model => model.User) </td>
+                <td>@Html.DisplayFor(model => model.Pass) </td>
+                <td>@Html.DisplayFor(model => model.ChucVu.TenCV) </td>
+
+            </tr>
+        </tbody>
+    </table>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.MaNV }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</div>

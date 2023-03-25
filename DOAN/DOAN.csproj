@@ -2922,6 +2922,11 @@
     <Content Include="Areas\Admin\Views\SpQuanAdmin\Detail.cshtml" />
     <Content Include="Areas\Admin\Views\SpQuanAdmin\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\SpQuanAdmin\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\SpAdmin\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\LoginAdmin\LstNhanVien.cshtml" />
+    <Content Include="Areas\Admin\Views\LoginAdmin\Detail.cshtml" />
+    <Content Include="Areas\Admin\Views\LoginAdmin\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\LoginAdmin\Delete.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

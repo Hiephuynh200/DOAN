@@ -40,12 +40,12 @@
                     }
                     else if (Session["Account"].Equals("111"))
                     {
-                        @Html.ActionLink("Xin chào " + @Session["User"], "Index", "HomeAdmin", new { area = "", @id = Session["TaiKhoan"] }, new { @class = "navbar-brand" })
+                        @Html.ActionLink("Xin chào " + @Session["User"], "LstNhanVien", "Admin/LoginAdmin", new { area = "", @id = Session["TaiKhoan"] }, new { @class = "navbar-brand" })
                         @Html.ActionLink("Đăng xuất", "Logout", "LoginAdmin", new { area = "" }, new { @class = "navbar-brand" })
                     }
                     else
                     {
-                        @Html.ActionLink("Xin chào " + @Session["User"], "Index", "HomeAdmin", new { area = "", @id = Session["TaiKhoan"] }, new { @class = "navbar-brand" })
+                        @Html.ActionLink("Xin chào " + @Session["User"], "LstNhanVien", "Admin/LoginAdmin", new { area = "", @id = Session["TaiKhoan"] }, new { @class = "navbar-brand" })
                         @Html.ActionLink("Đăng xuất", "Logout", "Admin/LoginAdmin", new { area = "" }, new { @class = "navbar-brand" })
                     }
                 </nav>

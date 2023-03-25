@@ -55,7 +55,8 @@
                 @Html.DisplayFor(modelItem => item.GiaNhap)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.MaSP }) |
+                   @Html.ActionLink("Edit", "Edit", new { id = item.MaSP }) |
+                @*<a class="btn btn-success" style="padding:1rem 2rem" href="@Url.Action("Detail", "HomeAdmin", new { @id = item.MaSP, @strURL = Request.Url.ToString() })">chi tiết</a>*@
                 @Html.ActionLink("Details", "Detail", new { id = item.MaSP }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.MaSP })
             </td>

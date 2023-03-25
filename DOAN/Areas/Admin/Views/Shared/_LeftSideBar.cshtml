@@ -2,7 +2,7 @@
 <ul class="navbar-nav sidebar sidebar-dark accordion" style="background-color:#808080" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="@Url.Action("Index", "HomeAdmin")">
         <div class="sidebar-brand-icon rotate-n-15">
         </div>
         <div class="sidebar-brand-text mx-3">H | Lab</div>
@@ -78,7 +78,8 @@
     <li class="nav-item">
         <div class="nav-link" style="display:flex; align-items:center; padding-top:0">
             <span href="#" hidden id="Hide">
-                @Html.ActionLink("Quản Lý Nhân Viên", "DangKyAdmin", "Admin/LoginAdmin", new { @area = "" }, new { @class = "nav-link" })
+                @Html.ActionLink("Danh sách Nhân Viên", "LstNhanVien", "Admin/LoginAdmin", new { @area = "" }, new { @class = "nav-link" })
+
             </span>
         </div>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"

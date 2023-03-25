@@ -3,7 +3,6 @@
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
-    <link href="~/Content/Site.css" rel="stylesheet" />
 }
 
 @using (Html.BeginForm())
@@ -56,7 +55,7 @@
                                     $.ajax(
                                         {
                                             type: 'POST',
-                                            url: '/HomeAdmin/ProcessUpload',
+                                            url: '/spQuanAdmin/ProcessUpload',
                                             contentType: false,
                                             processData: false,
                                             data: formData,
@@ -101,7 +100,7 @@
             </tbody>
         </table>
         <p>
-            @Html.ActionLink("Back to List", "Index")
+            @Html.ActionLink("Back to List", "SpQuan")
         </p>
     </div>
 }

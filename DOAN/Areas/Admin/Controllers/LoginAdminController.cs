@@ -127,6 +127,65 @@ namespace DOAN.Areas.Admin.Controllers
             return this.DangKyAdmin();
         }
 
+        public ActionResult LstNhanVien()
+        {
+            var listNv = from ss in data.NhanVien select ss;
+            return View(listNv);
+        }
+
+        public ActionResult Detail(int id)
+        {
+            var listNv = data.NhanVien.Where(m => m.MaNV == id).First(); 
+            return View(listNv);
+        }
+        public ActionResult Edit(int id)
+        {
+            var listNv = data.NhanVien.First(m => m.MaNV == id);
+            return View(listNv);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(int id, FormCollection collection)
+        {
+            var ENv = data.NhanVien.First(m => m.MaNV == id);
+            var E_tenNV = collection["TenNV"];
+            var E_SDT = collection["SDT"];
+            var E_DiaChi = collection["DiaChi"];
+            var E_Email = collection["Email"];
+            var User = collection["User"];
+            var Pass = collection["Pass"];
+            ENv.MaNV = id;
+            if (string.IsNullOrEmpty(E_tenNV))
+            {
+                ViewData["Error"] = "Don't empty!";
+            }
+            else
+            {
+                ENv.TenNV = E_tenNV;
+                ENv.SDT = E_SDT;
+                ENv.DiaChi = E_DiaChi;
+                ENv.Email = E_Email;
+                ENv.User = User;
+                ENv.Pass = Pass;
+                UpdateModel(ENv);
+                data.SaveChanges();
+                return RedirectToAction("LstNhanVien");
+            }
+            return this.Edit(id);
+        }
+        public ActionResult Delete(int id)
+        {
+            var listNv = data.NhanVien.First(m => m.MaNV == id);
+            return View(listNv);
+        }
+        [HttpPost]
+        public ActionResult Delete(int id, FormCollection collection)
+        {
+            var listNv = data.NhanVien.Where(m => m.MaNV == id).First(); 
+            data.NhanVien.Remove(listNv);
+            data.SaveChanges();
+            return RedirectToAction("LstNhanVien");
+        }
         public ActionResult Logout()
         {
             Session["User"] = null;

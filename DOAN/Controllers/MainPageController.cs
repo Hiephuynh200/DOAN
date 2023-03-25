@@ -18,7 +18,9 @@ namespace DOAN.Controllers
             var SearchAll = data.SanPham.OrderBy(s => s.TenSP);
             var SearchSp = data.SanPham.OrderBy(m => m.TenSP).Where(sp => sp.TenSP.ToUpper().Contains(SearchString.ToUpper()));
             page = 1;
-            if (SearchSp.ToString() == "")
+            if (SearchString == null || SearchString == "")
+                return View(SearchAll.ToPagedList(pageNum, pageSize));
+            else if (SearchSp != null)
                 return View(SearchSp.ToPagedList(pageNum, pageSize));
             else
                 return View(SearchAll.ToPagedList(pageNum, pageSize));
