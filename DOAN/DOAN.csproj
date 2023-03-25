@@ -964,6 +964,7 @@
     <Content Include="Content\images\about\banner.png" />
     <Content Include="Content\images\Banner2.jpeg" />
     <Content Include="Content\images\Banner3.png" />
+    <Content Include="Content\images\bannerlogin.jpg" />
     <Content Include="Content\images\banner\b1.jpg" />
     <Content Include="Content\images\banner\b10.jpg" />
     <Content Include="Content\images\banner\b14.png" />
@@ -2945,7 +2946,6 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Ao\SpAo.cshtml" />
-    <Content Include="Views\Ao\Detail.cshtml" />
     <Content Include="Views\Giay\SpGiay.cshtml" />
     <Content Include="Views\Quan\SpQuan.cshtml" />
     <Content Include="Views\MainPage\ListSP.cshtml" />
@@ -2954,6 +2954,8 @@
     <Content Include="Views\MainPage\Buy.cshtml" />
     <Content Include="Views\GioHang\GioHang.cshtml" />
     <Content Include="Views\GioHang\GioHangPartial.cshtml" />
+    <Content Include="Views\MainPage\Index.cshtml" />
+    <Content Include="Views\MainPage\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

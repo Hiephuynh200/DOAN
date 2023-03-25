@@ -279,7 +279,7 @@ namespace DOAN.Controllers
         {
             var tendangnhap = collection["Email"];
             var matkhau = collection["PassKH"];
-            KhachHang khachhang = db.KhachHang.FirstOrDefault(x => x.Email == tendangnhap && x.PassKH == matkhau);
+            KhachHang khachhang = db.KhachHang.FirstOrDefault(x => x.Email == tendangnhap  && x.PassKH == matkhau);
             if (khachhang != null)
             {
                 ViewBag.ThongBao = "Chúc mừng đăng nhập thành công";
@@ -289,7 +289,7 @@ namespace DOAN.Controllers
                 Session["FullTaiKhoan"] = khachhang;
 
             }
-            else if (khachhang != null)
+            else if (khachhang == null)
             {
                 ViewData["ErrorAccount"] = "sai mật khẩu hoặc Tên đăng nhập không tồn tại vui lòng nhập lại";
                 return this.DangNhap();
@@ -299,7 +299,7 @@ namespace DOAN.Controllers
                 ViewData["ErrorPass"] = "Mật khẩu không đúng";
                 return this.DangNhap();
             }
-            return RedirectToAction("ListSP", "MainPage");
+            return RedirectToAction("Index", "MainPage");
         }
 
         public ActionResult Logout()

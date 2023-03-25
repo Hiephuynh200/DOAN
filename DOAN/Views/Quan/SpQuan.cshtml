@@ -28,7 +28,10 @@
                         <i class="fas fa-star-half"></i>
                     </div>
                     <h4>GIÁ:@Html.DisplayFor(modelItem => item.GiaBan)</h4>
-                    <a href="">@Html.ActionLink("Mua", "Buy", "MainPage", new { @class = "fas fa-shopping-cart cart" })</a>
+                    <div style="display:flex; justify-content:space-between">
+                        <a class="btn btn-success" style="padding:1rem 2rem" href="@Url.Action("Detail", "MainPage", new { @id = item.MaSP, @strURL = Request.Url.ToString() })">chi tiết</a>
+                        <a class="btn btn-success" style="padding:1rem 2rem" href="@Url.Action("ThemGioHang", "GioHang", new { @id = item.MaSP, @strURL = Request.Url.ToString() })">Đặt mua</a>
+                    </div>
 
                 </div>
             </div>

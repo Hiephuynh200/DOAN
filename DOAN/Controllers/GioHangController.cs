@@ -65,7 +65,7 @@ namespace DOAN.Controllers
             DonDatHang temp = new DonDatHang(id, maTK);
             if (sanpham == null)
             {
-                sanpham = new DonDatHang(id, maTK);
+                sanpham = new DonDatHang(id);
                 sanpham.MaKH = maTK;
                 lstGiohang.Add(sanpham);
                 temp.SoLuong = sanpham.SoLuong;
@@ -141,6 +141,8 @@ namespace DOAN.Controllers
             if (sanpham != null)
             {
                 lstGiohang.RemoveAll(n => n.MaSP == id);
+                data.DonDatHang.Remove(sanpham);
+                data.SaveChanges();
                 return RedirectToAction("GioHang");
             }
             return RedirectToAction("GioHang");
@@ -149,10 +151,15 @@ namespace DOAN.Controllers
         public ActionResult CapnhatGiohang(int id, FormCollection collection)
         {
             List<DonDatHang> lstGiohang = Laygiohang();
-            DonDatHang sanpham = lstGiohang.SingleOrDefault(n => n.MaSP == id);
-            if (sanpham != null)
+            DonDatHang gioHang = lstGiohang.SingleOrDefault(s => s.MaSP == id);
+            SanPham sanPham = data.SanPham.SingleOrDefault(sp => sp.MaSP == id);
+            if (gioHang != null)
             {
-                sanpham.SoLuong = int.Parse(collection["txtSoLg"].ToString());
+                int sl = int.Parse(collection["txtSolg"].ToString());
+                gioHang.SoLuong = sl;
+                data.DonDatHang.AddOrUpdate(gioHang);
+                data.SaveChanges();
+                return RedirectToAction("GioHang");
             }
             return RedirectToAction("GioHang");
         }

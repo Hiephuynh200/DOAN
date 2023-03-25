@@ -23,13 +23,14 @@ namespace DOAN.Models
         public int MaKH { get; set; }
 
         public int? SoLuong { get; set; }
-        public Double? ThanhTien
-        {
-            get { return SoLuong * SanPham.GiaBan; }
-        }
+        
         public virtual KhachHang KhachHang { get; set; }
 
         public virtual SanPham SanPham { get; set; }
+        public Double ? ThanhTien
+        {
+            get { return SoLuong * SanPham.GiaBan; }
+        }
         public DonDatHang(int idSP)
         {
             MaSP = idSP;

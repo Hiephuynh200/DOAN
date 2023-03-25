@@ -10,7 +10,9 @@
           crossorigin="anonymous"
           referrerpolicy="no-referrer" />
 }
+
 <section id="product1" class="section-p1">
+
     <h2>Featured Products</h2>
     <p>Summer Collection New Morden Design</p>
     <div class="pro-container">
@@ -19,7 +21,7 @@
             <div class="pro">
                 <img src="@Html.DisplayFor(modelItem => item.HinhAnh)" alt="" />
                 <div class="desc">
-                        @Html.DisplayFor(modelItem=> item.MaSP)
+                    @Html.DisplayFor(modelItem => item.MaSP)
                     <span>@Html.DisplayFor(modelItem => item.TenSP)</span>
                     <div class="start">
                         <i class="fas fa-star"></i>
@@ -29,8 +31,12 @@
                         <i class="fas fa-star-half"></i>
                     </div>
                     <h4>GIÁ:@Html.DisplayFor(modelItem => item.GiaBan)</h4>
-                    <a href=" @Url.Action("Detail", "Ao")"><i class="fas fa-shopping-bag"></i></a>
-                    
+                    @* <a class="btn btn-success" href="@Url.Action("ThemGioHang", "GioHang", new { @id = item.MaSP, @strURL = Request.Url.ToString() })">Đặt mua</a>*@
+                    <div style="display:flex; justify-content:space-between">
+                        <a class="btn btn-success" style="padding:1rem 2rem" href="@Url.Action("Detail", "MainPage", new { @id = item.MaSP, @strURL = Request.Url.ToString() })">chi tiết</a>
+                        <a class="btn btn-success" style="padding:1rem 2rem" href="@Url.Action("ThemGioHang", "GioHang", new { @id = item.MaSP, @strURL = Request.Url.ToString() })">Đặt mua</a>
+                    </div>
+
                 </div>
             </div>
         }

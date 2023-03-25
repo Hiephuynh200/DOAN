@@ -1,4 +1,5 @@
 ﻿using DOAN.Models;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,10 +23,6 @@ namespace DOAN.Controllers
             var ListAo = data.SanPham.Where(x => x.MaLoai == 1001).ToList();
             return View(ListAo);
         }
-        public ActionResult Detail(int id)
-        {
-            var D_sach = data.SanPham.Where(m => m.MaSP == id).First(); 
-            return View(D_sach);
-        }
+       
     }
 }

@@ -28,28 +28,29 @@
     </tr>
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.MaSP)
-            </td>
-            <td>
-                <img src="@item.SanPham.HinhAnh" width="180" />
-            </td>
-            @using (Html.BeginForm("CapnhatGiohang", "GioHang", new { @id = item.SanPham.LoaiSanPham.TenLoai }))
-            {
-                <td>@item.SanPham.GiaBan VNĐ</td>
-                <td><input type="number" min="1" max="@item.SanPham.SoLuong" name="txtSolg" value="@item.SoLuong" /></td>
-                <td>@Html.DisplayFor(modelItem => item.ThanhTien)</td>
-                <td>
-                    <a href="@Url.Action("Details", "SanPhams", new {id = item.MaSP})">Chi tiết</a>
-                    | @Html.ActionLink("Xoá", "XoaGiohang", new { @id = item.MaSP })
-                </td>
-                <td class="btn btn-success" href="@Url.Action("CapnhatGiohang", "GioHang", new { @id = item.MaSP, @soLuong = item.SoLuong})">Cập nhật</td>
-            }
-            <td>
-                @Html.DisplayFor(modelItem => item.ThanhTien)
-            </td>
-        </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.MaSP)
+    </td>
+    <td>
+        <img src="@item.SanPham.HinhAnh" width="180" />
+    </td>
+    @using (Html.BeginForm("CapnhatGiohang", "GioHang", new { @id = item.SanPham.MaSP}))
+    {
+        <td>@item.SanPham.GiaBan VNĐ</td>
+        <td><input type="number" min="1" max="@item.SanPham.SoLuong" name="txtSolg" value="@item.SoLuong" /></td>
+        <td>@Html.DisplayFor(modelItem => item.ThanhTien)</td>
+        <td>
+            <a href="@Url.Action("Detail", "SanPham", new {id = item.MaSP})">Chi tiết</a>
+            | @Html.ActionLink("Xoá", "XoaGioHang", new { @id = item.MaSP })
+        </td>
+        <td><input type="submit" value="Cập nhật" class="btn btn-success" /></td>
+    }
+    
+    <td>
+        @Html.DisplayFor(modelItem => item.ThanhTien)
+    </td>
+</tr>
     }
     <tr style="font-weight:bold; text-align:left;color:red">
         <td colspan="2">Số loại sách: @ViewBag.Tongsoluongsanpham</td>

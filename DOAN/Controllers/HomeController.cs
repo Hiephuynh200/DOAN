@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DOAN.Models;
+using PagedList;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,7 +10,8 @@ namespace DOAN.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        MyDataContextDB data = new MyDataContextDB();
+        public ActionResult Index(int? page, string SearchString)
         {
             return View();
         }

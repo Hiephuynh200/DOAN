@@ -1,4 +1,5 @@
-﻿@model IEnumerable<DOAN.Models.SanPham>
+﻿@model PagedList.IPagedList<DOAN.Models.SanPham>
+@using PagedList.Mvc 
 @{
     ViewBag.Title = "ListSP";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -8,20 +9,28 @@
           integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
           crossorigin="anonymous"
           referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+}
+@using (Html.BeginForm())
+{
+    <div class="form-group form-inline align-items-center justify-content-center ">
+        Tìm kiếm:  @Html.TextBox("SearchString", "", new { @class = "form-control", @style = "width:350px; margin:0 1rem" })
+        <input type="submit" class="btn btn-default btnhover" style=" border: 1px solid #000;" value="Search" />
+    </div>
 }
 <section id="product1" class="section-p1">
     <h2>Featured Products</h2>
     <p>Summer Collection New Morden Design</p>
     <div class="pro-container">
-
         @foreach (var item in Model)
         {
 
             <div class="pro">
-                <img src="@Html.DisplayFor(modelItem => item.HinhAnh)" alt="" />
+                <img src="@item.HinhAnh" alt="" />
                 <div class="desc">
-                    <span>@Html.DisplayFor(modelItem => item.MaSP)</span>
-                    <span>@Html.DisplayFor(modelItem => item.TenSP)</span>
+                    <span>@item.MaSP</span>
+                    <span>@item.TenSP</span>
                     <div class="start">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -29,13 +38,113 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star-half"></i>
                     </div>
-                    <h4>GIÁ:@Html.DisplayFor(modelItem => item.GiaBan)</h4>
+                    <h4>GIÁ:@item.GiaBan</h4>
                     <a class="btn btn-success" href="@Url.Action("ThemGioHang", "GioHang", new { @id = item.MaSP, @strURL = Request.Url.ToString() })">Đặt mua</a>
                 </div>
             </div>
         }
 </section>
+<div class="d-xl-flex d-sm-flex d-flex d-lg-flex align-items-md-center align-items-lg-center align-items-sm-center flex-column">
 
+    <div class="MenuTrang">
+        @Html.PagedListPager(Model, page => Url.Action("MainPage", new
+        {
+            page = page
+        }))
+    </div>
+</div>
+<style>
+    .HH {
+        overflow: hidden;
+        display: block;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+    }
 
+    .btnhover:hover {
+        background-color: #808080;
+    }
 
+    .card-i:hover {
+        transition: 0.5s ease-in;
+        transform: rotate(0deg) translate(0rem, -2rem);
+    }
 
+    .line {
+        padding: 1rem 0;
+    }
+
+    .MenuTrang {
+        margin: 1rem 0;
+    }
+
+        .MenuTrang li {
+            display: inline;
+            margin: 0 1.7rem;
+            padding: 10px 20px;
+            background-color: #000000;
+            color: #fff;
+            font-size: 1.4rem;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+
+            .MenuTrang li a {
+                background-color: #000000;
+                color: #fff;
+                font-size: 1.4rem;
+                text-decoration: none;
+            }
+
+    .line {
+        width: 26%;
+        min-width: 250px;
+        padding: 10px 20px;
+        border: 1px solid #cce7d0;
+        border-radius: 25px;
+        cursor: pointer;
+        box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.02);
+        margin: 15px 0;
+        transition: 0.2s ease;
+        position: relative;
+    }
+</style>
+<style type="text/css">
+    #mau-nut a {
+        clear: both;
+        background-color: orange;
+        color: snow;
+    }
+
+        #mau-nut a:hover {
+            background-color: darkcyan;
+            color: snow;
+        }
+</style>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var maxLength = 100;
+        $(".show-read-more").each(function () {
+            var myStr = $(this).text();
+            if ($.trim(myStr).length > maxLength) {
+                var newStr = myStr.substring(0, maxLength);
+                var removedStr = myStr.substring(maxLength, $.trim(myStr).length);
+                $(this).empty().html(newStr);
+                $(this).append(' <a href="javascript:void(0);" class="readmore">đọc tiếp...</a>');
+                $(this).append('<span class="more-text">' + removedStr +
+                    '</span>');
+            }
+        });
+        $(".read-more").click(function () {
+            $(this).siblings(".more-text").contents().unwrap(); 27
+            $(this).remove();
+        });
+    });
+</script>
+<style>
+    .show-read-more .more-text {
+        display: none;
+    }
+</style>
