@@ -4,8 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>DatHang</h2>
-<div class="box-container">
+<div class="box-container" style="font-size:2rem">
     <h2 style="text-align: center">Đơn hàng</h2>
 
     <table class="table">
@@ -43,34 +42,31 @@
                     <td>@Html.DisplayFor(ModelItem => item.SoLuong)</td>
                     <td>@Html.DisplayFor(ModelItem => item.ThanhTien)</td>
                 }
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-                </td>
+                 
             </tr>
         }
-        <tr style="font-weight: bold; text-align: right; color: red">
-            <td colspan="3">Số lượng sản phẩm: @ViewBag.TongSoLuong</td>
-            <td colspan="4">Số loại sản phẩm: @ViewBag.TongSoLuongSanPham</td>
-            <td colspan="5">Tổng tiền: @ViewBag.TongTien VND</td>
+        <tr style="font-weight: bold; text-align: left; color: red">
+            <td colspan="">Số lượng sản phẩm: @ViewBag.TongSoLuong</td>
+            <td colspan="">Số loại sản phẩm: @ViewBag.TongSoLuongSanPham</td>
+            <td colspan="">Tổng tiền: @ViewBag.TongTien VND</td>
         </tr>
-        <tr style="font-weight: bold; text-align: right">
+        @*<tr style="font-weight: bold; text-align: right">
             <td colspan="6">
                 @Html.ActionLink("Trở về giỏ hàng", "GioHang", "GioHang")
             </td>
-        </tr>
+        </tr>*@
 
     </table>
 
     @using DOAN.Models
-    <h2 style="text-align: center">Thông tin đặt hàng</h2>
+    <h2 style="text-align: center;font-size:3rem">Thông tin đặt hàng</h2>
     @{
 
         KhachHang kh = (KhachHang)Session["FullTaiKhoan"];
 
 
     }
+<div style="display:flex; justify-content:space-around; font-size:2rem">
     <table align="center">
         @using (Html.BeginForm())
         {
@@ -80,7 +76,7 @@
                 <td style="font-weight: bold">@kh.TenKH</td>
             </tr>
             <tr style="height: 40px">
-                <td>Email</td>
+                <td>Email:</td>
                 <td style="font-weight: bold">@kh.Email</td>
             </tr>
             <tr style="height: 40px">
@@ -98,10 +94,12 @@
             <tr style="height: 40px">
                 <td> </td>
                 <td style="font-weight: bold">
-                    <input type="submit" value="Xác nhận" class="btn btn-success" />
+                    <input type="submit" value="Xác nhận" class="btn btn-success " style="font-size:2rem"/>
                 </td>
             </tr>
         }
     </table>
-
+    <img src="~/Content/images/OIP.jpg" alt="Alternate Text" />
 </div>
+    
+   

@@ -36,7 +36,6 @@
                     @if (Session["TaiKhoan"] == null)
                     {
                         @Html.ActionLink("Đăng nhập", "DangNhap", "Admin/LoginAdmin", new { area = "" }, new { @class = "navbar-brand" })
-                        @Html.ActionLink("Đăng ký", "DangKy", "Admin/User", new { area = "" }, new { @class = "navbar-brand" })
                     }
                     else if (Session["Account"].Equals("111"))
                     {

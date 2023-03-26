@@ -1,4 +1,5 @@
 ﻿using DOAN.Models;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,6 +7,7 @@ using System.Net;
 using System.Net.Mail;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Hosting;
 using System.Web.Mvc;
@@ -136,8 +138,7 @@ namespace DOAN.Controllers
                 return RedirectToAction("Index");
             }
         }
-
-
+        
         public JsonResult SendOTP(KhachHang kh)
         {
             bool valid = false;
@@ -154,8 +155,8 @@ namespace DOAN.Controllers
                 Session["OTP"] = OTP.ToString();
                 var fromAddress = new MailAddress("huynhhiepvan1998@gmail.com");
                 var toAddress = new MailAddress(kh.Email);
-                const string fromPass = "gnugexpocjwbxvcu";
-                const string subject = "OTP code";
+                const string fromPass = "nfsmcunzrefhsznp";
+                const string subject = "OTP code";            
                 string body = OTP.ToString();
                 var smtp = new SmtpClient
                 {
