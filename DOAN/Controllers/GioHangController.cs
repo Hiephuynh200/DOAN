@@ -172,7 +172,7 @@ namespace DOAN.Controllers
         [HttpGet]
         public ActionResult DatHang()
         {
-            if (Session["TaiKhoan"] == null || Session["TaiKhoan"].ToString() == "")
+            if (Session["TaiKhoanKH"] == null || Session["TaiKhoanKH"].ToString() == "")
             {
                 return RedirectToAction("DangNhap", "NguoiDung");
             }
@@ -200,21 +200,24 @@ namespace DOAN.Controllers
             data.SaveChanges();
             foreach (var item in lstGiohang)
             {
+                var temp = data.DonDatHang.FirstOrDefault(x => x.MaKH == item.MaKH && x.MaSP == item.MaSP);
+                data.DonDatHang.Remove(temp);
                 ChiTietHoaDon ctdh = new ChiTietHoaDon();
+                s = data.SanPham.Find(item.MaSP);
                 ctdh.MaSP = item.MaSP;
                 ctdh.MaHD = dh.MaHD;
                 ctdh.SoLuongSanPham = item.SoLuong;
+                s.SoLuong -= item.SoLuong;
                 data.ChiTietHoaDon.Add(ctdh);
+                data.SanPham.AddOrUpdate(s);
                 data.SaveChanges();
             }
             data.SaveChanges();
             Session["GioHang"] = null;
-            return RedirectToAction("Xacnhandonhang", "GioHang");
+            return RedirectToAction("XacnhanDonhang", "GioHang");
         }
 
-    
-
-
+   
         public ActionResult XacnhanDonhang()
         {
             return View();

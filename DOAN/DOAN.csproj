@@ -46,10 +46,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
@@ -140,8 +140,10 @@
     <Compile Include="Areas\Admin\Controllers\SpAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\SpQuanAdminController.cs" />
     <Compile Include="Controllers\AoController.cs" />
+    <Compile Include="Controllers\ChiTietHoaDonsController.cs" />
     <Compile Include="Controllers\GiayController.cs" />
     <Compile Include="Controllers\GioHangController.cs" />
+    <Compile Include="Controllers\HoaDonsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MainPageController.cs" />
     <Compile Include="Controllers\NguoiDungController.cs" />
@@ -2964,6 +2966,17 @@
     <Content Include="Views\MainPage\Index.cshtml" />
     <Content Include="Views\MainPage\Detail.cshtml" />
     <Content Include="Views\GioHang\XacnhanDonhang.cshtml" />
+    <Content Include="Views\HoaDons\Create.cshtml" />
+    <Content Include="Views\HoaDons\Delete.cshtml" />
+    <Content Include="Views\HoaDons\Details.cshtml" />
+    <Content Include="Views\HoaDons\Edit.cshtml" />
+    <Content Include="Views\HoaDons\Index.cshtml" />
+    <Content Include="Views\ChiTietHoaDons\Create.cshtml" />
+    <Content Include="Views\ChiTietHoaDons\Delete.cshtml" />
+    <Content Include="Views\ChiTietHoaDons\Details.cshtml" />
+    <Content Include="Views\ChiTietHoaDons\Edit.cshtml" />
+    <Content Include="Views\ChiTietHoaDons\Index.cshtml" />
+    <Content Include="Views\GioHang\DatHang.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
