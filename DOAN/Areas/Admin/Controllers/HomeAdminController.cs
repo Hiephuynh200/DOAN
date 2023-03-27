@@ -51,12 +51,28 @@ namespace DOAN.Areas.Admin.Controllers
         }
         public ActionResult Create()
         {
+            ViewBag.Ma_SP = new SelectList(data.LoaiSanPham, "MaLoai", "TenLoai");
             return View();
         }
         [HttpPost]
         public ActionResult Create(SanPham sp)
         {
             MyDataContextDB data = new MyDataContextDB();
+            if(sp.SoLuong <= 0)
+            {
+                ViewData["WrongNumber"] = "số lượng ko được âm";
+                return this.Create();
+            } 
+            if(sp.GiaBan <=0 )
+            {
+                ViewData["WrongMoney1"] = "giá tiền ko được âm";
+                return this.Create();
+            }
+             if (sp.GiaNhap <= 0)
+            {
+                ViewData["WrongMoney"] = "giá nhập ko được âm";
+                return this.Create();
+            }
             data.SanPham.AddOrUpdate(sp);
             data.SaveChanges();
             return RedirectToAction("Create");
@@ -88,11 +104,27 @@ namespace DOAN.Areas.Admin.Controllers
             }
         }
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, FormCollection collection, SanPham sanpham)
         {
 
             var sp = data.SanPham.First(m => m.MaSP == id);
+
             var E_tensp = collection["TenSP"];
+            if (sanpham.SoLuong <= 0)
+            {
+                ViewData["WrongNumber"] = "số lượng ko được âm";
+                return this.Create();
+            }
+             if (sanpham.GiaBan <= 0)
+            {
+                ViewData["WrongMoney1"] = "giá tiền ko được âm";
+                return this.Create();
+            }
+             if (sanpham.GiaNhap <= 0)
+            {
+                ViewData["WrongMoney"] = "Giá nhập ko được âm";
+                return this.Create();
+            }
             sp.MaSP = id;
             if (string.IsNullOrEmpty(E_tensp))
             {

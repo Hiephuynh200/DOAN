@@ -35,6 +35,21 @@ namespace DOAN.Areas.Admin.Controllers
         public ActionResult Create(SanPham sp)
         {
             MyDataContextDB data = new MyDataContextDB();
+            if (sp.SoLuong <= 0)
+            {
+                ViewData["WrongNumber"] = "số lượng ko được âm";
+                return this.Create();
+            }
+            else if (sp.GiaBan <= 0)
+            {
+                ViewData["WrongMoney1"] = "giá bán ko được âm";
+                return this.Create();
+            }
+            else if (sp.GiaNhap <= 0)
+            {
+                ViewData["WrongMoney"] = "giá nhập ko được âm";
+                return this.Create();
+            }
             data.SanPham.AddOrUpdate(sp);
             data.SaveChanges();
             return RedirectToAction("Create");
@@ -74,10 +89,25 @@ namespace DOAN.Areas.Admin.Controllers
             }
         }
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, FormCollection collection, SanPham sanpham)
         {
 
             var sp = data.SanPham.First(m => m.MaSP == id);
+            if (sanpham.SoLuong <= 0)
+            {
+                ViewData["WrongNumber"] = "số lượng ko được âm";
+                return this.Create();
+            }
+            else if (sanpham.GiaBan <= 0)
+            {
+                ViewData["WrongMoney1"] = "giá bán ko được âm";
+                return this.Create();
+            }
+            else if (sanpham.GiaNhap <= 0)
+            {
+                ViewData["WrongMoney"] = "giá nhập ko được âm";
+                return this.Create();
+            }
             var E_tensp = collection["TenSP"];
             sp.MaSP = id;
             if (string.IsNullOrEmpty(E_tensp))
