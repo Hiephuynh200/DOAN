@@ -58,7 +58,8 @@ namespace DOAN.Areas.Admin.Controllers
         public ActionResult Create(SanPham sp)
         {
             MyDataContextDB data = new MyDataContextDB();
-            if(sp.SoLuong <= 0)
+            NhanVien kh = (NhanVien)Session["FullTaiKhoan"];
+            if (sp.SoLuong <= 0)
             {
                 ViewData["WrongNumber"] = "số lượng ko được âm";
                 return this.Create();

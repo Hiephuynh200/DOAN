@@ -25,11 +25,6 @@ namespace DOAN.Controllers
                 lstGiohang = new List<DonDatHang>();
                 Session["GioHang"] = lstGiohang;
             }
-            //else if (lstGiohang == null)
-            //{
-            //    lstGiohang = new List<GioHang>();
-            //    Session["GioHang"] = lstGiohang;
-            //}
             else
             {
                 foreach (DonDatHang gh in loadGH)
@@ -207,6 +202,7 @@ namespace DOAN.Controllers
                 ctdh.MaSP = item.MaSP;
                 ctdh.MaHD = dh.MaHD;
                 ctdh.SoLuongSanPham = item.SoLuong;
+                //trừ số lượng
                 s.SoLuong -= item.SoLuong;
                 data.ChiTietHoaDon.Add(ctdh);
                 data.SanPham.AddOrUpdate(s);
